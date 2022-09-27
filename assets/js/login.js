@@ -1,5 +1,4 @@
 $(function () {
-    const baseUrl = 'http://big-event-api-t.itheima.net'
     // 点击"去注册账号"的链接
     $('#link_reg').on('click', function () {
         $('.login-box').hide()
@@ -40,7 +39,7 @@ $(function () {
         // 2. 发起Ajax的post请求
         $.ajax({
             method: 'POST',
-            url: `${baseUrl}/api/reguser`,
+            url: '/api/reguser',
             data,
             success(res) {
                 if (res.status !== 0) {
@@ -59,7 +58,7 @@ $(function () {
         e.preventDefault()
         $.ajax({
             method: 'POST',
-            url: `${baseUrl}/api/login`,
+            url: '/api/login',
             // 快速获取表单中的数据
             data: $(this).serialize(),
             success(res) {
@@ -70,7 +69,7 @@ $(function () {
                 // 将登录成功得到的 token 字符串，保存到localStorage 中
                 localStorage.setItem('token', res.token)
                 // 跳转到后台主页
-                location.href = '/index.html'
+                location.href = './index.html'
             }
         })
     })
